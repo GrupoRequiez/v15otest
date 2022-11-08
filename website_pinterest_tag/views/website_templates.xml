@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="web_layout" name="Website Pinterest Tag" inherit_id="web.layout">
+        <xpath expr="//head" position="inside">
+            <!-- Pinterest Tag -->
+            <script t-if="website and website.pinterest_tag and not editable">
+            !function(e){if(!window.pintrk){window.pintrk = function () {
+            window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+              n=window.pintrk;n.queue=[],n.version="3.0";var
+              t=document.createElement("script");t.async=!0,t.src=e;var
+              r=document.getElementsByTagName("script")[0];
+              r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+            pintrk('load', '<t t-esc="website.pinterest_tag"/>');
+            pintrk('page');
+            </script>
+            <noscript t-if="website and website.pinterest_tag and not editable">
+                <img height="1" width="1" style="display:none;" alt=""
+                    t-attf-src="https://ct.pinterest.com/v3/?event=init&amp;tid={{ website.pinterest_tag }}&amp;noscript=1"/>
+            </noscript>
+            <!-- end Pinterest Tag -->
+        </xpath>
+    </template>
+
+</odoo>

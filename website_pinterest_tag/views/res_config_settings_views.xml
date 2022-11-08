@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="website_config_settings_view_form_inherit_website_pinterest_tag" model="ir.ui.view">
+        <field name="name">website.config.settings.view.form.inherit.website.pinterest.tag</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='google_analytics_setting']" position="after">
+                <div class="col-12 col-lg-6 o_setting_box" id="pinterest_tag_setting">
+                    <div class="o_setting_left_pane">
+                        <field name="has_pinterest_tag"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="has_pinterest_tag"/>
+                        <span class="fa fa-lg fa-globe" title="Values set here are website-specific." groups="website.group_multi_website"/>
+                        <div class="text-muted">
+                            The Pinterest tag is a piece of code that you add to your website which lets Pinterest track visitors to your site as well as the actions they take on your site after seeing your Pinterest ad.
+                        </div>
+                        <div class="content-group" attrs="{'invisible': [('has_pinterest_tag', '=', False)]}">
+                            <div class="row mt16">
+                                <label class="col-lg-3 o_light_label" string="Tag ID" for="pinterest_tag"/>
+                                <field name="pinterest_tag" placeholder="XXXXXXXXXXXXXXX"
+                                    attrs="{'required': [('has_pinterest_tag', '=', True)]}"/>
+                            </div>
+                        </div>
+                        <div attrs="{'invisible': [('has_pinterest_tag', '=', False)]}" name="pinterest_tag_help">
+                            <a href="https://help.pinterest.com/en/business/article/install-the-pinterest-tag"
+                                    class="oe_link" target="_blank">
+                                <i class="fa fa-arrow-right"/>
+                                How to set up Pinterest Tag
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
